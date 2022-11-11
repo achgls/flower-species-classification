@@ -4,7 +4,7 @@ from PIL import Image
 
 data_dir = "../res/images"
 image_files = glob.glob("../res/images/*/*")
-total_n_images = image_files
+total_n_images = len(image_files)
 
 labels = [
     "Species1",
@@ -17,7 +17,9 @@ labels = [
     "Species8"
 ]
 
-n_images = dict()
+n_species = len(labels)
+
+n_images: dict[str, int] = {}
 for label in labels:
     n_images[label] = len(os.listdir("{}/{}/".format(data_dir, label)))
 
