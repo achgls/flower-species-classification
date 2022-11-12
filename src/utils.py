@@ -37,3 +37,7 @@ except AssertionError as err:
     print("Error: data unexpectedly has inconsistent size or color-encoding")
     raise AssertionError.with_traceback()
 
+
+class_loss_weights = [
+    (1 / n_images[species]) * (total_n_images / n_species) for species in labels
+]
