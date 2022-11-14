@@ -10,7 +10,7 @@ class BalancedDataPipe:
     def __init__(
             self,
             data_directory: str,
-            rng_seed: int = None,
+            rng_seed: int = 42,
             val_split: float = 0.15
     ):
         self.rng_seed = rng_seed
@@ -65,7 +65,6 @@ class BalancedDataPipe:
             repeat_factor = ceil(max_n_samples / n_samples)
             class_dataset = (
                 self.train_ds
-                .unbatch()
                 .filter(lambda features, label: label == class_number)
                 .shuffle(n_samples, reshuffle_each_iteration=True)
             )
